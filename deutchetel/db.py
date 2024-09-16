@@ -72,4 +72,6 @@ def get_history(size: int):
 
     # Convert each row to a dictionary
     predictions = [dict(zip(columns, prediction)) for prediction in predictions]
-    return list(predictions)[-size:]
+    result = list(predictions)
+    result.reverse()
+    return result[:size]

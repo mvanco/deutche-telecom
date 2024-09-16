@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_cors import CORS
 import os
 import deutchetel.restapi.main as restapi
 import deutchetel.db as db
@@ -7,6 +8,7 @@ import deutchetel.db as db
 def create_app(test_config=None):
     """Create and configure an instance of the Flask application."""
     app = Flask(__name__, instance_relative_config=True)
+    CORS(app)
     app.config.from_mapping(
         # a default secret that should be overridden by instance config
         SECRET_KEY="dev",
