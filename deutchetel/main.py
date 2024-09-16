@@ -12,6 +12,7 @@ TRAIN_DATA = 'housing.csv'
 MODEL_NAME = 'model.joblib'
 RANDOM_STATE=100
 
+
 def prepare_data(input_data_path):
     df=pd.read_csv(input_data_path)
     df=df.dropna() 
@@ -26,6 +27,7 @@ def prepare_data(input_data_path):
 
     return (X_train, X_test, y_train, y_test)
 
+
 def train(X_train, y_train):
     # what columns are expected by the model
     X_train.columns
@@ -35,17 +37,21 @@ def train(X_train, y_train):
 
     return regr
 
+
 def predict(X, model):
     Y = model.predict(X)
     return Y
+
 
 def save_model(model, filename):
     with open(filename, 'wb'):
         joblib.dump(model, filename, compress=3)
 
+
 def load_model(filename):
     model = joblib.load(filename)
     return model
+
 
 if __name__ == '__main__':
     logging.info('Preparing the data...')
